@@ -18,6 +18,8 @@ Requires an installation of the python drawBot library (<code>from drawBot impor
 
 * DrawBot pen for converting from robofab glyph
 * <code>drawGlyph()</code>, which acts like the function in the <a href="https://github.com/typemytype/drawBotRoboFontExtension">DrawBot RoboFont Extension</a>
+* <code>ufoText()</code>, which acts like Drawbot's native <code>text()</code> but draws from a robofab font
+* <code>ufoTextSize()</code>, which gets the dimensions of a UFO-based textblock
 
 ### Shape
 
