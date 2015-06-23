@@ -1,5 +1,5 @@
 # drawbotlab
-Some helpers for <a href="http://drawbot.readthedocs.org">DrawBot</a> that I tend to use and reuse. Instead of copy/paste, now I call them like this:
+Some helpers for <a href="http://drawbot.readthedocs.org">DrawBot</a> that I tend to use and reuse. I used to just copy/paste these things into my drawbot scripts, but it seems cleaner to just call them like this:
 
 <code>
 from drawbotlab.color import RGBColor
