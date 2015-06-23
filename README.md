@@ -15,7 +15,7 @@ Drawbotlab doesn't have an installer or anything like that. To use it, simply pl
 
 ### Color
 
-* RGBColor and CMYKColor objects, for easy color definition and setting
+* RGBColor and CMYKColor objects, for easy color definition and selection.
 * Genericized <code>fillColor()</code> and <code>strokeColor()</code> functions, that accept color objects, RGB tuples, or CMYK tuples
 
 ### Glyph
