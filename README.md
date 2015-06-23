@@ -1,15 +1,15 @@
 # drawbotlab
 Some helpers for <a href="http://drawbot.readthedocs.org">DrawBot</a> that I tend to use and reuse. I used to just copy/paste these things into my drawbot scripts, but it seems cleaner to just call them and use them like this:
 
-<code>
-from drawbotlab.color import RGBColor
+<pre>from drawbotlab.color import RGBColor
 from drawbotlab.shape import roundedRect
 myBlue = RGBColor(b=1)
 myBlue.setFill()
-roundedRect(50, 50, 200, 100, r=20)
-</code>
+roundedRect(50, 50, 200, 100, r=20)</pre>
 
 Requires an installation of the python drawBot library (<code>from drawBot import *</code>). The glyph module requires <a href="http://robofab.org">RoboFab</a> and <a href="https://github.com/behdad/fonttools/">fontTools</a>.
+
+Drawbotlab doesn't have an installer or anything like that. To use it, simply place the folder, or a pth file pointing to the folder, in your Python site-packages.
 
 ## What’s inside?
 
