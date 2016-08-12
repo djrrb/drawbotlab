@@ -69,7 +69,7 @@ def ufoText(textString, pos, font, fontSize, showMissing='.notdef', kerning=True
     # but for now we will explode kerning once so we don't ahve to 
     if kerning:
         explodedKerning = font.kerning.copy()
-        explodedKerning.explodeClasses(*_getKernGroups(f.groups))
+        explodedKerning.explodeClasses(*_getKernGroups(font.groups))
     save()
     # move to the position
     if draw: translate(*pos)
@@ -103,3 +103,32 @@ def ufoTextSize(textString, font, fontSize, kerning=True):
     This is pretty dang inefficient, but such is life!
     """
     return ufoText(textString, font, fontSize, draw=False)
+    
+    
+### BY JUST ####
+
+import AppKit
+
+_methodMap = {
+    AppKit.NSMoveToBezierPathElement: "moveTo",
+    AppKit.NSLineToBezierPathElement: "lineTo",
+    AppKit.NSCurveToBezierPathElement: "curveTo",
+    AppKit.NSClosePathBezierPathElement: "closePath",
+}
+
+def drawPathToPen(path, pen):
+    didClosePath = True
+    for i in range(path._path.elementCount()):
+        instr, pts = path._path.elementAtIndex_associatedPoints_(i)
+        methodName = _methodMap[instr]
+        if methodName == "moveTo":
+            if not didClosePath:
+                # Previous contour was open, we should call pen.endPath()
+                pen.endPath()
+            didClosePath = False
+        elif methodName == "closePath":
+            didClosePath = True
+        getattr(pen, methodName)(*pts)
+    if not didClosePath:
+        # The final subpath is open, we must still call endPath()
+        pen.endPath()

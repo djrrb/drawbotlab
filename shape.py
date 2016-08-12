@@ -1,6 +1,6 @@
 from drawBot import *
 
-def roundedRect(x, y, w, h, r=None, curvature=.552):
+def roundedRect(x, y, w, h, r=None, curvature=.6):
     """
     Draw a rounded rectangle.
     Acts like drawbot rect() but takes optional 
@@ -27,3 +27,57 @@ def roundedRect(x, y, w, h, r=None, curvature=.552):
     p.curveTo((x+r-bl, y), (x, y+r-bl), (x, y+r))
     p.closePath()
     drawPath(p)
+    
+    
+def fillRect(shape, cx, cy, cw, ch, shapeScale=1, cols=None, rows=None, gap=None, clip=False):
+
+    save()
+    if clip:
+        clip = BezierPath()
+        clip.rect(cx, cy, cw, ch)
+        clipPath(clip)
+    
+    x1, y1, x2, y2 = shape.bounds()
+    shapeWidth = (x2 - x1) * shapeScale
+    shapeHeight = (y2 - y1) * shapeScale
+    
+
+    if gap is None and not cols and not rows:
+        print 'Set columns and rows or an object gap.'
+    elif gap is not None and not cols and not rows:
+        cols = cw / (shapeWidth+gap)
+        if cols != int(cols):
+            cols += 1
+        cols = int(cols)
+
+        rows = ch / (shapeHeight+gap)
+        if rows != int(rows):
+            rows += 1
+        rows = int(rows)
+        print cols, rows
+
+    elif gap:
+        print 'Ignoring gap...'
+
+    if gap:
+        gapx = gap
+        gapy = gap
+    else:
+        gapx = (cw-shapeWidth*(cols-1))/(cols-1)
+        gapy = (ch-shapeHeight*(rows-1))/(rows-1)
+
+    translate(-shapeWidth/2, -shapeHeight/2)
+
+    translate(cx, cy)
+    
+    for r in range(rows):
+        save()
+        for c in range(cols):
+            save()
+            scale(shapeScale)
+            drawPath(shape)
+            restore()
+            translate(shapeWidth+gapx, 0)
+        restore()
+        translate(0, shapeHeight+gapy)
+    restore()
