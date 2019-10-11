@@ -43,7 +43,7 @@ def fillRect(shape, cx, cy, cw, ch, shapeScale=1, cols=None, rows=None, gap=None
     
 
     if gap is None and not cols and not rows:
-        print 'Set columns and rows or an object gap.'
+        print('Set columns and rows or an object gap.')
     elif gap is not None and not cols and not rows:
         cols = cw / (shapeWidth+gap)
         if cols != int(cols):
@@ -54,10 +54,10 @@ def fillRect(shape, cx, cy, cw, ch, shapeScale=1, cols=None, rows=None, gap=None
         if rows != int(rows):
             rows += 1
         rows = int(rows)
-        print cols, rows
+        print(cols, rows)
 
     elif gap:
-        print 'Ignoring gap...'
+        print('Ignoring gap...')
 
     if gap:
         gapx = gap
