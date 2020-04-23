@@ -22,10 +22,10 @@ class VFInstance:
         out = proc.communicate()[0]
 
         if DEBUG:
-            print '---'
-            print ' '.join(cmds)
-            print '---'
-            print out
+            print ('---')
+            print (' '.join(cmds))
+            print ('---')
+            print (out)
 
         myUUID = str(uuid.uuid4()).replace('-', '')
         f = TTFont(tempPath)

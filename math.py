@@ -9,8 +9,7 @@ def lerp(start, stop, amt):
 	
 def norm(value, start, stop):
 	"""
-	Interpolate.
-	Get Interpolated value, between zero and one.
+	Interpolate using a value between 0 and 1
 	See also: https://processing.org/reference/norm_.html
 	"""
 	return start + (stop-start) * value
