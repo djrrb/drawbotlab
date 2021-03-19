@@ -1,4 +1,4 @@
-import drawBot 
+from drawBot import *
 
 def imageBox(im, box, fit="fill", clip=False, center=None, alpha=1):
     """
