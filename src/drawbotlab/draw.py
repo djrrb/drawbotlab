@@ -134,7 +134,7 @@ if __name__ == "__main__":
             strokeWidth(2)
             rect(*r)
         r = (600, 125, 200, 200)
-        fs = FormattedString('a', fontSize=800, font='Condor Variable')
+        fs = FormattedString('a', fontSize=800)
         b = BezierPath()
         b.text(fs)
         fill(0, 1, 0)
